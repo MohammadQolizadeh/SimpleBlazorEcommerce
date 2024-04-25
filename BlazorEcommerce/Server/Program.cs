@@ -1,6 +1,7 @@
 global using BlazorEcommerce.Shared;
 global using Microsoft.EntityFrameworkCore;
 global using  BlazorEcommerce.Server.Data;
+using BlazorEcommerce.Server.Services.ProductService;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,8 @@ builder.Services.AddDbContext<DataContext>(opttions =>
 
 #endregion
 
+
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
@@ -22,6 +25,13 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+#endregion
+
+
+#region ServiceRegister
+
+builder.Services.AddScoped<IProductService,ProductService>();
 
 #endregion
 
